@@ -1,5 +1,6 @@
 # FRONT
-
+node_modules/
+front/dist/
 
 # BACK
 back/env/
