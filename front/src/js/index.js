@@ -2,9 +2,21 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import 'bootstrap/dist/css/bootstrap-reboot.min.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { Provider } from 'react-redux'
+import { createStore, combineReducers } from 'redux'
 
-const Index = () => {
-  return <div className="btn btn-info">Hello React yeah!</div>;
-};
+import * as reducers from './reducers'
 
-ReactDOM.render(<Index />, document.getElementById("root"));
+import App from './components/app'
+
+const rootReducer = combineReducers({...reducers})
+const store = createStore(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root"));
