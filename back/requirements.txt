@@ -1,0 +1,10 @@
+Flask
+SQLAlchemy
+flask-marshmallow
+flask-cors
+Flask-Script
+Flask-Migrate
+marshmallow-sqlalchemy
+marshmallow
+psycopg2
+psycopg2-binary

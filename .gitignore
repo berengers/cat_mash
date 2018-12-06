@@ -2,3 +2,5 @@
 
 
 # BACK
+back/env/
+__pycache__/
