@@ -1,7 +1,9 @@
 import React from 'react'
 
+import VsCats from './vsCats'
+
 const App = () => {
-  return <h1>APPP</h1>
+  return <VsCats />
 }
 
 
