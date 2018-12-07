@@ -9,12 +9,12 @@ from cat_mash.models import Cat, cat_schema, cats_schema, vs_cats_schema
 def get_cats(page):
 
     cats = Cat.query\
-        .order_by(Cat.id.desc())\
+        .order_by(Cat.rate.desc())\
         .paginate(int(page), 10, False)\
         .items
 
     next = Cat.query\
-        .order_by(Cat.id.desc())\
+        .order_by(Cat.rate.desc())\
         .paginate(int(page), 10, False)\
         .has_next
 
