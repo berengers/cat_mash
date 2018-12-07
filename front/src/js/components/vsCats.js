@@ -34,7 +34,8 @@ const VsCats = ({ dispatch, vsCats }) => {
           className="btn btn-light d-block rounded-top shadow border mx-auto"
           style={{ width: "300px" }}>
           <p className="m-0 text-dark">
-            Retour aux votes
+            Voir les plus beaux chats <br/>
+            xxx xxx votes
           </p>
         </div>
       </div>
