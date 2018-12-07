@@ -55,7 +55,10 @@ const Stats = ({ dispatch, cats, catsPage }) => {
         <div className="col-12">
           <div
           className="btn btn-lg btn-dark d-block col-6 py-1 px-5 mb-5 mt-4 mx-auto"
-          onClick={ () => { dispatch(fetchCats(catsPage + 1)) } }
+          onClick={ () => {
+            dispatch(fetchCats(catsPage + 1)),
+            dispatch({ type: type.NEXT_CATS_PAGE })
+          }}
           >
             More ...
           </div>

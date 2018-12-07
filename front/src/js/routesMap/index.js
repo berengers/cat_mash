@@ -1,3 +1,4 @@
+import * as type from '../actions/const'
 import { fetchVsCats, fetchCats } from '../actions/cat'
 import { fetchTotalRates } from '../actions/stats'
 
@@ -11,7 +12,9 @@ const routesMap = {
   },
   STATS: {
     path: "/stats",
-    thunk: (dispatch) => dispatch(fetchCats(1))
+    thunk: (dispatch) => {
+      dispatch(fetchCats(1))
+    }
   }
 }
 

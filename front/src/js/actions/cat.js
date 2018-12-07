@@ -41,7 +41,6 @@ export function fetchRateCat(id){
 
 export function fetchCats(page){
   return (dispatch) => {
-    dispatch({ type: type.NEXT_CATS_PAGE })
     return fetch(
       'http://localhost:5000/api/cats/' + page,
       {

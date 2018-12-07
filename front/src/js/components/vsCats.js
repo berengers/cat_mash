@@ -38,7 +38,7 @@ const VsCats = ({ dispatch, vsCats, totalRates }) => {
           style={{ width: "300px" }}>
           <p className="m-0 text-dark">
             Voir les plus beaux chats <br/>
-            {totalRates} votes
+            <strong>{totalRates} votes</strong>
           </p>
         </div>
       </div>
