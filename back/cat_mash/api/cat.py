@@ -31,8 +31,14 @@ def get_vs_cats():
 
     max = Cat.query.count()
 
-    cat1 = Cat.query.filter_by(id=random.randint(1, max)).first()
-    cat2 = Cat.query.filter_by(id=random.randint(1, max)).first()
+    v1 = random.randint(1, max)
+    v2 = random.randint(1, max)
+
+    while v1 == v2:
+        v2 = random.randint(1, max)
+
+    cat1 = Cat.query.filter_by(id=v1).first()
+    cat2 = Cat.query.filter_by(id=v2).first()
 
     return vs_cats_schema.jsonify([cat1, cat2])
 
