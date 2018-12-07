@@ -1,13 +1,26 @@
+from flask import jsonify
 import random
 from datetime import datetime
 
 from cat_mash import app, db
 from cat_mash.models import Cat, cat_schema, cats_schema, vs_cats_schema
 
-@app.route('/api/cats', methods=["GET"])
-def get_cats():
+@app.route('/api/cats/<page>', methods=["GET"])
+def get_cats(page):
 
-    cats = Cat.query.order_by(Cat.rate.desc())
+    cats = Cat.query\
+        .order_by(Cat.id.desc())\
+        .paginate(int(page), 10, False)\
+        .items
+
+    next = Cat.query\
+        .order_by(Cat.id.desc())\
+        .paginate(int(page), 10, False)\
+        .has_next
+
+    print ("cats ---------------> ", len(cats))
+    print ("next ---------------> ", next)
+
 
     return cats_schema.jsonify(cats)
 
