@@ -39,10 +39,11 @@ export function fetchRateCat(id){
   }
 }
 
-export function fetchCats(){
+export function fetchCats(page){
   return (dispatch) => {
+    dispatch({ type: type.NEXT_CATS_PAGE })
     return fetch(
-      'http://localhost:5000/api/cats',
+      'http://localhost:5000/api/cats/' + page,
       {
         method: "GET",
         headers: {
@@ -53,6 +54,7 @@ export function fetchCats(){
     .then((resp) => { return resp.json() })
     .then((cats) => {
       console.log ("--- RECEIVES CATS ---")
+      console.log ("cats ---> ", cats)
       dispatch({ type: type.RECEIVE_CATS, payload: { cats } })
     })
   }

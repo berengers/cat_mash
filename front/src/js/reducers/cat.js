@@ -3,8 +3,19 @@ import * as type from '../actions/const'
 
 export function cats(state=[], action){
   switch (action.type) {
+    case type.INITIAL_CATS:
+      return []
     case type.RECEIVE_CATS:
-      return action.payload.cats
+      return [ ...state, ...action.payload.cats ]
+    default:
+      return state
+  }
+}
+
+export function catsPage(state=1, action){
+  switch (action.type) {
+    case type.NEXT_CATS_PAGE:
+      return state + 1
     default:
       return state
   }

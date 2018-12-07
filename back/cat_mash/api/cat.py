@@ -10,16 +10,17 @@ def get_cats(page):
 
     cats = Cat.query\
         .order_by(Cat.rate.desc())\
+        .order_by(Cat.updated_at.desc())\
         .paginate(int(page), 10, False)\
         .items
 
-    next = Cat.query\
-        .order_by(Cat.rate.desc())\
-        .paginate(int(page), 10, False)\
-        .has_next
-
-    print ("cats ---------------> ", len(cats))
-    print ("next ---------------> ", next)
+    # next = Cat.query\
+    #     .order_by(Cat.rate.desc())\
+    #     .paginate(int(page), 10, False)\
+    #     .has_next
+    #
+    # print ("cats ---------------> ", len(cats))
+    # print ("next ---------------> ", next)
 
 
     return cats_schema.jsonify(cats)

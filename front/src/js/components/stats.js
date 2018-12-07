@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { CSSTransition } from 'react-transition-group'
 
 import * as type from '../actions/const'
+import { fetchCats } from '../actions/cat'
 
 const imgFill = (url) => ({
   height: "150px",
@@ -25,7 +26,7 @@ const progresStyle = {
 }
 
 
-const Stats = ({ dispatch, cats }) => {
+const Stats = ({ dispatch, cats, catsPage }) => {
   const maxRate = cats.length>0?cats[0].rate:0
 
   return (
@@ -51,6 +52,14 @@ const Stats = ({ dispatch, cats }) => {
           </div>
           ))
         }
+        <div className="col-12">
+          <div
+          className="btn btn-lg btn-dark d-block col-6 py-1 px-5 mb-5 mt-4 mx-auto"
+          onClick={ () => { dispatch(fetchCats(catsPage + 1)) } }
+          >
+            More ...
+          </div>
+        </div>
       </div>
       <div className="col-12 position-fixed" style={{ bottom: 0 }}>
         <div
@@ -66,6 +75,6 @@ const Stats = ({ dispatch, cats }) => {
   )
 }
 
-const mapStateToProps = ({ cats }) => ({ cats })
+const mapStateToProps = ({ cats, catsPage }) => ({ cats, catsPage })
 
 export default connect(mapStateToProps)(Stats)

@@ -11,7 +11,7 @@ const routesMap = {
   },
   STATS: {
     path: "/stats",
-    thunk: (dispatch) => dispatch(fetchCats())
+    thunk: (dispatch) => dispatch(fetchCats(1))
   }
 }
 
