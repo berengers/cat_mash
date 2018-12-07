@@ -15,8 +15,10 @@ def get_cats():
 @app.route('/api/cats/vs', methods=["GET"])
 def get_vs_cats():
 
-    cat1 = Cat.query.filter_by(id=random.randint(1, 100)).first()
-    cat2 = Cat.query.filter_by(id=random.randint(1, 100)).first()
+    max = Cat.query.count()
+
+    cat1 = Cat.query.filter_by(id=random.randint(1, max)).first()
+    cat2 = Cat.query.filter_by(id=random.randint(1, max)).first()
 
     return vs_cats_schema.jsonify([cat1, cat2])
 
