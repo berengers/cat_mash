@@ -13,4 +13,4 @@ def get_stats():
         count += cat.rate
 
 
-    return jsonify({ "rates": count })
+    return jsonify({ "total": count })

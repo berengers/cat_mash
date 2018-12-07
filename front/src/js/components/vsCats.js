@@ -6,7 +6,7 @@ import { fetchRateCat } from '../actions/cat'
 import logo from '../../medias/cat-mash-logo.png'
 
 
-const VsCats = ({ dispatch, vsCats }) => {
+const VsCats = ({ dispatch, vsCats, totalRates }) => {
   return (
     <React.Fragment>
       <div className="container-fluid p-0">
@@ -35,7 +35,7 @@ const VsCats = ({ dispatch, vsCats }) => {
           style={{ width: "300px" }}>
           <p className="m-0 text-dark">
             Voir les plus beaux chats <br/>
-            xxx xxx votes
+            {totalRates} votes
           </p>
         </div>
       </div>
@@ -43,6 +43,6 @@ const VsCats = ({ dispatch, vsCats }) => {
   )
 }
 
-const mapStateToProps = ({ vsCats }) => ({ vsCats })
+const mapStateToProps = ({ vsCats, totalRates }) => ({ vsCats, totalRates })
 
 export default connect(mapStateToProps)(VsCats)
