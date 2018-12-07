@@ -38,3 +38,22 @@ export function fetchRateCat(id){
     })
   }
 }
+
+export function fetchCats(){
+  return (dispatch) => {
+    return fetch(
+      'http://localhost:5000/api/cats',
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+    )
+    .then((resp) => { return resp.json() })
+    .then((cats) => {
+      console.log ("--- RECEIVES CATS ---")
+      dispatch({ type: type.RECEIVE_CATS, payload: { cats } })
+    })
+  }
+}

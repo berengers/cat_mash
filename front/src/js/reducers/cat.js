@@ -1,9 +1,10 @@
 import * as type from '../actions/const'
 
+
 export function cats(state=[], action){
   switch (action.type) {
-    case "expression":
-
+    case type.RECEIVE_CATS:
+      return action.payload.cats
     default:
       return state
   }
