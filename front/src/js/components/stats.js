@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { CSSTransition } from 'react-transition-group'
 
 import * as type from '../actions/const'
 
@@ -33,17 +34,19 @@ const Stats = ({ dispatch, cats }) => {
         {
           cats.map(cat => (
           <div key={cat.id} className="row mb-3" style={{ height: "150px" }}>
-            <div className="col-6 col-lg-3 text-right">
-              <div className="bg-info mx-auto rounded-circle" style={imgFill(cat.url)}></div>
+            <div className="col-6 col-lg-3">
+              <div className="bg-light mx-auto rounded-circle" style={imgFill(cat.url)}></div>
             </div>
             <div className="col-6 col-lg-8">
-              <div className="progress" style={progresStyle}>
-                <div
-                className="progress-bar text-left font-weight-bold"
-                style={{ width: progressSize(maxRate,cat.rate)+"%" }}>
-                  <span style={{ position: "relative", left: "12px" }}>{cat.rate} votes</span>
+              <CSSTransition in={true} appear={true} timeout={2000} classNames="progress">
+                <div className="progress" style={progresStyle}>
+                  <div
+                  className="progress-bar bg-info text-left font-weight-bold"
+                  style={{ width: progressSize(maxRate,cat.rate)+"%" }}>
+                    <span style={{ position: "relative", left: "12px" }}>{cat.rate} votes</span>
+                  </div>
                 </div>
-              </div>
+              </CSSTransition>
             </div>
           </div>
           ))

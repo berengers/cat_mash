@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { CSSTransition } from 'react-transition-group'
 
 import * as type from '../actions/const'
 import { fetchRateCat } from '../actions/cat'
@@ -17,12 +18,14 @@ const VsCats = ({ dispatch, vsCats, totalRates }) => {
             {
               vsCats.map((cat, index) => (
                 <div key={cat.id} className={"col-md-6 d-flex py-4 " + (index === 0?"bg-light":"bg-white")}>
-                  <img
-                  src={cat.url}
-                  onClick={() => { dispatch(fetchRateCat(cat.id)) }}
-                  className="btn btn-light border p-2 img-fluid align-self-center justify-content-center mx-auto rounded"
-                  style={{ maxWidth: "60%", zIndex: 50 }}
-                  />
+                  <CSSTransition in={true} appear={true} timeout={400} classNames="vs-cat">
+                    <img
+                    src={cat.url}
+                    onClick={() => { dispatch(fetchRateCat(cat.id)) }}
+                    className="btn btn-light border p-2 img-fluid align-self-center justify-content-center mx-auto rounded position-relative"
+                    style={{ zIndex: 50 }}
+                    />
+                  </CSSTransition>
                 </div>
               ))
             }

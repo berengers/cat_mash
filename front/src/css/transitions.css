@@ -1,0 +1,25 @@
+/* appear - on page load */
+.progress-appear {
+    width: 0%;
+}
+.progress-appear.progress-appear-active {
+  width: 100%;
+  transition: width 2000ms ease;
+}
+
+
+.vs-cat-appear {
+  opacity: 0;
+  top: 40px;
+  max-width: 55%;
+}
+.vs-cat-appear.vs-cat-appear-active {
+  opacity: 1;
+  top: 0;
+  max-width: 60%;
+  transition: opacity 400ms ease, top 400ms ease, max-width 400ms ease;
+}
+
+.vs-cat-enter-done {
+  max-width: 60%;
+}

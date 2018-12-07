@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import VsCats from './vsCats'
 import Stats from './stats'
+import '../../css/transitions.css'
+import '../../css/app.css'
 
 const components = {
   'HOME':   <VsCats />,
@@ -11,7 +13,7 @@ const components = {
 
 const App = ({ page }) => {
   return (
-    <div className="bg-light">
+    <div>
       {
         components[page]
       }
