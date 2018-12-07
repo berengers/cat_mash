@@ -4,4 +4,5 @@ front/dist/
 
 # BACK
 back/env/
+*.pyc
 __pycache__/
