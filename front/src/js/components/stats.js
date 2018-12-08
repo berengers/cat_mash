@@ -4,6 +4,7 @@ import { CSSTransition } from 'react-transition-group'
 
 import * as type from '../actions/const'
 import { fetchCats } from '../actions/cat'
+import logo from '../../medias/cat-mash-logo.png'
 
 const imgFill = (url) => ({
   height: "150px",
@@ -31,14 +32,15 @@ const Stats = ({ dispatch, statsCats, statsPage }) => {
 
   return (
     <React.Fragment>
-      <div className="p-4 col-sm-10 mx-auto">
+      <div className="p-4 col-sm-10 col-lg-8 col-xl-6 mx-auto">
+        <img src={logo} className="d-block mx-auto" width="200px"/>
         {
           statsCats.map(cat => (
-          <div key={cat.id} className="row mb-3" style={{ height: "150px" }}>
-            <div className="col-6 col-lg-3">
-              <div className="bg-light mx-auto rounded-circle" style={imgFill(cat.url)}></div>
+          <div key={cat.id} className="d-flex mb-3" style={{ height: "150px" }}>
+            <div className="">
+              <div className="bg-light rounded-circle" style={imgFill(cat.url)}></div>
             </div>
-            <div className="col-6 col-lg-8">
+            <div className="flex-grow-1 pl-4">
               <CSSTransition in={true} appear={true} timeout={2000} classNames="progress">
                 <div className="progress" style={progresStyle}>
                   <div
