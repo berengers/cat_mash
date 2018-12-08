@@ -1,16 +1,13 @@
 from flask import jsonify
+from sqlalchemy import func
 
 from cat_mash import app, db
 from cat_mash.models import Cat
 
 @app.route('/api/stats/rates', methods=["GET"])
 def get_stats():
-    cats = Cat.query.all()
+    qry = db.session.query(func.sum(Cat.rate)).all()
 
-    count = 0
+    total = qry[0][0]
 
-    for cat in cats:
-        count += cat.rate
-
-
-    return jsonify({ "total": count })
+    return jsonify(total)
