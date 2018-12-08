@@ -4,6 +4,7 @@ flask-marshmallow
 flask-cors
 Flask-Script
 Flask-Migrate
+Flask-Env
 marshmallow-sqlalchemy
 marshmallow
 psycopg2
