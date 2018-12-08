@@ -53,7 +53,6 @@ export function fetchCats(page){
     .then((resp) => { return resp.json() })
     .then((res) => {
       console.log ("--- RECEIVES CATS ---")
-      console.log ("cats ---> ", res.cats)
       dispatch({ type: type.RECEIVE_CATS, payload: { res } })
     })
   }
