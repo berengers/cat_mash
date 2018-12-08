@@ -1,3 +1,3 @@
-export { cats, catsPage, vsCats } from './cat'
 export { page } from './page'
-export { totalRates } from './stats'
+export { vsCats } from './cat'
+export { statsCats, statsPage, totalRates } from './stats'

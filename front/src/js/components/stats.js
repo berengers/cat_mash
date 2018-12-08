@@ -26,14 +26,14 @@ const progresStyle = {
 }
 
 
-const Stats = ({ dispatch, cats, catsPage }) => {
-  const maxRate = cats.length>0?cats[0].rate:0
+const Stats = ({ dispatch, statsCats, statsPage }) => {
+  const maxRate = statsCats.length>0?statsCats[0].rate:0
 
   return (
     <React.Fragment>
       <div className="p-4 col-sm-10 mx-auto">
         {
-          cats.map(cat => (
+          statsCats.map(cat => (
           <div key={cat.id} className="row mb-3" style={{ height: "150px" }}>
             <div className="col-6 col-lg-3">
               <div className="bg-light mx-auto rounded-circle" style={imgFill(cat.url)}></div>
@@ -52,17 +52,19 @@ const Stats = ({ dispatch, cats, catsPage }) => {
           </div>
           ))
         }
-        <div className="col-12">
-          <div
-          className="btn btn-lg btn-dark d-block col-6 py-1 px-5 mb-5 mt-4 mx-auto"
-          onClick={ () => {
-            dispatch(fetchCats(catsPage + 1)),
-            dispatch({ type: type.NEXT_CATS_PAGE })
-          }}
-          >
-            More ...
+        {statsCats.length < statsPage.totalCats &&
+          <div className="col-12">
+            <div
+            className="btn btn-lg btn-dark d-block col-6 py-1 px-5 mb-5 mt-4 mx-auto"
+            onClick={ () => {
+              dispatch(fetchCats(statsPage.pageNumber + 1)),
+              dispatch({ type: type.NEXT_CATS_PAGE })
+            }}
+            >
+              More ...
+            </div>
           </div>
-        </div>
+        }
       </div>
       <div className="col-12 position-fixed" style={{ bottom: 0 }}>
         <div
@@ -78,6 +80,6 @@ const Stats = ({ dispatch, cats, catsPage }) => {
   )
 }
 
-const mapStateToProps = ({ cats, catsPage }) => ({ cats, catsPage })
+const mapStateToProps = ({ statsCats, statsPage }) => ({ statsCats, statsPage })
 
 export default connect(mapStateToProps)(Stats)

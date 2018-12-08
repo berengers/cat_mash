@@ -42,7 +42,7 @@ export function fetchRateCat(id){
 export function fetchCats(page){
   return (dispatch) => {
     return fetch(
-      'http://localhost:5000/api/cats/' + page,
+      `http://localhost:5000/api/cats?page=${page}&page_size=${10}`,
       {
         method: "GET",
         headers: {
@@ -51,10 +51,10 @@ export function fetchCats(page){
       }
     )
     .then((resp) => { return resp.json() })
-    .then((cats) => {
+    .then((res) => {
       console.log ("--- RECEIVES CATS ---")
-      console.log ("cats ---> ", cats)
-      dispatch({ type: type.RECEIVE_CATS, payload: { cats } })
+      console.log ("cats ---> ", res.cats)
+      dispatch({ type: type.RECEIVE_CATS, payload: { res } })
     })
   }
 }

@@ -4,26 +4,27 @@ from datetime import datetime
 
 from cat_mash import app, db
 from cat_mash.models import Cat, cat_schema, cats_schema, vs_cats_schema
+from flask import request
 
-@app.route('/api/cats/<page>', methods=["GET"])
-def get_cats(page):
+@app.route('/api/cats', methods=["GET"])
+def get_cats():
+    cats = Cat.query \
+        .order_by(Cat.rate.desc()) \
+        .order_by(Cat.updated_at.desc()) \
+        .offset(int(request.args.get('page', 0)) * int(request.args.get('page_size', 3))) \
+        .limit(int(request.args.get('page_size', 3))) \
+        .all()
 
-    cats = Cat.query\
-        .order_by(Cat.rate.desc())\
-        .order_by(Cat.updated_at.desc())\
-        .paginate(int(page), 10, False)\
-        .items
+    res = cats_schema.dump(cats)
 
-    # next = Cat.query\
-    #     .order_by(Cat.rate.desc())\
-    #     .paginate(int(page), 10, False)\
-    #     .has_next
-    #
-    # print ("cats ---------------> ", len(cats))
-    # print ("next ---------------> ", next)
+    if len(res.errors) > 0:
+        return jsonify({"errors": res.errors})
 
-
-    return cats_schema.jsonify(cats)
+    return jsonify({
+        "total": Cat.query.count(),
+        "cats": cats_schema.dump(cats).data
+    })
+    
 
 
 @app.route('/api/cats/vs', methods=["GET"])
