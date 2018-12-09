@@ -1,6 +1,7 @@
 # FRONT
 node_modules/
 front/dist/
+package-lock.json
 
 # BACK
 back/env/
