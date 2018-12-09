@@ -5,7 +5,7 @@ import * as type from './const'
 export function fetchVsCats(){
   return (dispatch) => {
     return fetch(
-      'http://localhost:5000/api/cats/vs',
+      '/api/cats/vs',
       {
         method: "GET",
         headers: {
@@ -24,7 +24,7 @@ export function fetchVsCats(){
 export function fetchRateCat(id){
   return (dispatch) => {
     return fetch(
-      'http://localhost:5000/api/cats/' + id,
+      '/api/cats/' + id,
       {
         method: "PUT",
         headers: {
@@ -42,7 +42,7 @@ export function fetchRateCat(id){
 export function fetchCats(page){
   return (dispatch) => {
     return fetch(
-      `http://localhost:5000/api/cats?page=${page}&page_size=${10}`,
+      `/api/cats?page=${page}&page_size=10`,
       {
         method: "GET",
         headers: {
