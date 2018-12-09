@@ -1,9 +1,11 @@
+import 'whatwg-fetch'
+
 import * as type from './const'
 
 export function fetchTotalRates(){
   return (dispatch) => {
     return fetch(
-      'http://localhost:5000/api/stats/rates',
+      '/api/stats/rates',
       {
         method: "GET",
         headers: {

@@ -1,4 +1,4 @@
-// !!!!!!!!! IMPORT POLYFILL FOR FETCH !!!!!!!!!!!!!!
+import 'whatwg-fetch'
 
 import * as type from './const'
 
