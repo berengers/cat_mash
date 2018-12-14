@@ -68,7 +68,7 @@ const Stats = ({ dispatch, statsCats, statsPage }) => {
           </div>
         }
       </div>
-      <div className="col-12 position-fixed" style={{ bottom: 0 }}>
+      <div className="col-12 position-fixed" style={{ bottom: 0, zIndex: 100 }}>
         <div
           onClick={() => { dispatch({ type: type.HOME }) }}
           className="btn btn-light d-block rounded-top shadow border mx-auto"

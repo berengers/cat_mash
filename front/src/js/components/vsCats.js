@@ -31,7 +31,7 @@ const VsCats = ({ dispatch, vsCats, totalRates }) => {
             }
         </div>
       </div>
-      <div className="col-12 position-fixed" style={{ bottom: 0 }}>
+      <div className="col-12 position-fixed" style={{ bottom: 0, zIndex: 100 }}>
         <div
           onClick={() => { dispatch({ type: type.STATS }) }}
           className="btn btn-light d-block rounded-top shadow border mx-auto"
